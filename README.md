@@ -7,7 +7,9 @@
   [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/1etu/toorker/releases)
   [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
 
-  <img src=".github/assets/screenshot.png" alt="Toorker Screenshot" width="800" />
+  <img width="1920" height="1080" alt="frWjPGhTL2" src="https://github.com/user-attachments/assets/e7e32383-c471-4dea-a72b-978dcd6a6744" />
+
+
 </div>
 
 ---
