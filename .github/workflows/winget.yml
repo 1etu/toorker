@@ -1,0 +1,70 @@
+name: Publish to Winget
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish to winget-pkgs
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Get release info
+        id: release
+        shell: pwsh
+        run: |
+          $version = "${{ github.event.release.tag_name }}".TrimStart('v')
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+          
+          # Find MSI installer URL
+          $assets = '${{ toJson(github.event.release.assets) }}' | ConvertFrom-Json
+          $msiAsset = $assets | Where-Object { $_.name -like "*.msi" } | Select-Object -First 1
+          
+          if ($msiAsset) {
+            echo "installer_url=$($msiAsset.browser_download_url)" >> $env:GITHUB_OUTPUT
+            
+            # Download and compute SHA256
+            $msiPath = "$env:TEMP\installer.msi"
+            Invoke-WebRequest -Uri $msiAsset.browser_download_url -OutFile $msiPath
+            $hash = (Get-FileHash -Path $msiPath -Algorithm SHA256).Hash
+            echo "installer_sha256=$hash" >> $env:GITHUB_OUTPUT
+            Remove-Item $msiPath
+          } else {
+            echo "::error::No MSI installer found in release assets"
+            exit 1
+          }
+      
+      - name: Install winget-create
+        run: |
+          winget install wingetcreate --disable-interactivity --accept-source-agreements
+      
+      - name: Submit to winget-pkgs
+        shell: pwsh
+        env:
+          WINGET_GITHUB_TOKEN: ${{ secrets.WINGET_TOKEN }}
+        run: |
+          wingetcreate update `
+            --submit `
+            --token "$env:WINGET_GITHUB_TOKEN" `
+            --urls "${{ steps.release.outputs.installer_url }}" `
+            --version "${{ steps.release.outputs.version }}" `
+            1etu.Toorker
+      
+      - name: Comment on release
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.release.id,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Submitted to Windows Package Manager (winget). The package will be available after PR approval (usually 24-48 hours).'
+            })

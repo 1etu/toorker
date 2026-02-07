@@ -1,0 +1,20 @@
+PackageIdentifier: 1etu.Toorker
+PackageVersion: 0.1.0
+Platform:
+  - Windows.Desktop
+MinimumOSVersion: 10.0.17763.0
+InstallerType: wix
+Scope: user
+InstallModes:
+  - interactive
+  - silent
+  - silentWithProgress
+UpgradeBehavior: install
+ReleaseDate: 2026-02-07
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/1etu/toorker/releases/download/v0.1.0/Toorker_0.1.0_x64_en-US.msi
+    InstallerSha256: PLACEHOLDER_SHA256
+    ProductCode: '{PLACEHOLDER_PRODUCT_CODE}'
+ManifestType: installer
+ManifestVersion: 1.6.0

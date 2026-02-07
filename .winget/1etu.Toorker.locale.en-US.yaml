@@ -1,0 +1,46 @@
+PackageIdentifier: 1etu.Toorker
+PackageVersion: 0.1.0
+PackageLocale: en-US
+Publisher: 1etu
+PublisherUrl: https://github.com/1etu
+PublisherSupportUrl: https://github.com/1etu/toorker/issues
+Author: 1etu
+PackageName: Toorker
+PackageUrl: https://github.com/1etu/toorker
+License: MIT
+LicenseUrl: https://github.com/1etu/toorker/blob/main/LICENSE
+Copyright: Copyright (c) 2026 1etu
+ShortDescription: Developer toolkit — built by developers, for developers
+Description: |-
+  Toorker is a Swiss-design, utility-first desktop application that consolidates essential developer tools into a single, fast, and beautiful interface. Built with Tauri, React 19, and TypeScript, it offers native performance with a modern web-based UI.
+  
+  Features include system monitoring (ports, processes), API testing, converters (number base, date, color, cron), formatters (JSON, Markdown, Base64, URL, HTML, JWT), generators (UUID, hash, password, Lorem Ipsum, gradients), text tools (regex tester, text diff), and a smart command palette with natural language parsing.
+Moniker: toorker
+Tags:
+  - developer-tools
+  - tauri
+  - desktop-app
+  - utilities
+  - productivity
+  - toolkit
+  - ports
+  - processes
+  - api-tester
+  - converter
+  - generator
+ReleaseNotes: |-
+  Initial release of Toorker v0.1.0
+  
+  Features:
+  - System tools: Ports monitor, Process manager, API tester
+  - Converters: Number base, Date, Color, Cron parser
+  - Formatters: JSON, Markdown, Base64, URL, HTML, JWT decoder
+  - Generators: UUID, Hash, Password, Lorem Ipsum, Gradient builder
+  - Text tools: Regex tester, Text diff
+  - Smart command palette with natural language parsing
+  - Customizable keyboard shortcuts
+  - Auto-updater with cryptographic signing
+  - Swiss design UI with dark mode
+ReleaseNotesUrl: https://github.com/1etu/toorker/releases/tag/v0.1.0
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

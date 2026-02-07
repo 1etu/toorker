@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicedoc/tauri-schema/master/schema/tauri.conf.json",
+  "productName": "Toorker",
+  "version": "0.1.0",
+  "identifier": "com.toorker.app",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Toorker",
+        "width": 1100,
+        "height": 700,
+        "minWidth": 800,
+        "minHeight": 500,
+        "center": true,
+        "decorations": false,
+        "resizable": true
+      },
+      {
+        "label": "palette",
+        "title": "Toorker Search Window",
+        "url": "/",
+        "width": 680,
+        "height": 440,
+        "visible": false,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "skipTaskbar": true,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDEyN0QwNjUyQTdCNzI0RTkKUldUcEpMZW5VZ1o5RXVrUk5nbVVZd2hTcWcxbTFnZHlOY2hkZjE2VlAyNDF1WkRtQ0lMK1h1S0wK",
+      "endpoints": [
+        "https://github.com/1etu/toorker/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

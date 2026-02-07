@@ -1,0 +1,22 @@
+[package]
+name = "toorker"
+version = "0.1.0"
+description = "Toolset for developers, by developers."
+authors = ["1etu"]
+edition = "2021"
+
+[lib]
+name = "toorker_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
